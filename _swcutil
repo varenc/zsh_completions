@@ -1,0 +1,88 @@
+#compdef swcutil
+
+_swcutil() {
+  local -a commands
+  local -a options
+
+  options=(
+    '--leaks[Run leaks before termination.]'
+    '--vmmap[Run vmmap before termination.]'
+    '--heap[Run heap before termination.]'
+    '--verbose[Increase verbosity of output.]'
+  )
+
+  commands=(
+    'dl:Downloads an A-A-S-A file from a domain.:_dl'
+    'get:Gets info about apps and/or domains.:_get'
+    'openul:Open a URL as a universal link.:_openul'
+    'show:Show the current state.'
+    'verify:Verify apple-app-site-association files. Use -u to match a URL.:_verify'
+    'reset:Reset the database and restart swcd.'
+    'watch:Watch the system log for SWC logging.:_watch'
+    'match:Test a pattern-matching dictionary against a URL.:_match'
+    'developer-mode:Enable or disable developer mode.:_developer_mode'
+  )
+
+  _arguments -s $options ':command:->command' '*:: :->args'
+
+  case $state in
+    command)
+      _describe -t commands 'swcutil command' commands
+      ;;
+    args)
+      case $words[1] in
+        dl)
+          _dl
+          ;;
+        get)
+          _get
+          ;;
+        openul)
+          _openul
+          ;;
+        verify)
+          _verify
+          ;;
+        watch)
+          _watch
+          ;;
+        match)
+          _match
+          ;;
+        developer-mode)
+          _developer_mode
+          ;;
+      esac
+      ;;
+  esac
+}
+
+_dl() {
+  _arguments -s ':domain:->domain' '-t[timeout in seconds]:timeout:'
+}
+
+_get() {
+  _arguments -s '-s[service]:service:' '-a[app-id]:app-id:' '-d[domain]:domain:'
+}
+
+_openul() {
+  _arguments -s '-u[url]:url:' '-r[referrer-url]:referrer-url:'
+}
+
+_verify() {
+  _arguments -s '-d[domain]:domain:' '-j[JSON-or-path]:json-or-path:' '-u[url]:url:'
+}
+
+_watch() {
+  _arguments -s '--verbose[Enable debug-level logging]'
+}
+
+_match() {
+  _arguments -s '-u[url]:url:' '-j[JSON-or-path]:json-or-path:'
+}
+
+_developer_mode() {
+  _arguments -s '-e[enabled]:enabled:(enabled disabled)'
+}
+
+_swcutil

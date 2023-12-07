@@ -1,0 +1,113 @@
+#compdef nettop
+
+
+## ChatGPT generated
+
+_nettop() {
+    local state
+    local -a options
+    local -a mode_types
+    local -a interface_types
+    local -a column_names
+
+    mode_types=(
+        'route:Monitor the routing table'
+        'tcp:Monitor only TCP sockets'
+        'udp:Monitor only UDP sockets'
+    )
+
+    interface_types=(
+        'wifi:Sockets bound to a WiFi interface'
+        'wired:Sockets bound to a wired interface'
+        'awdl:Sockets bound to Apple Wireless Direct Link'
+        'expensive:Sockets bound to interfaces marked as "expensive"'
+        'loopback:Sockets bound to the loopback interface'
+        'undefined:Sockets not bound to a particular interface'
+        'external:Combination of all defined non-loopback interfaces'
+    )
+
+    column_names=(
+        'bytes_in'
+        'bytes_out'
+        'cc_algo'
+        'cell_bytes_in'
+        'cell_bytes_out'
+        'closed_tcp'
+        'closed_udp'
+        'conn_att'
+        'conn_est'
+        'epid'
+        'euuid'
+        'interface'
+        'packets_in'
+        'packets_out'
+        'rcvsize'
+        'rcvused'
+        're-tx'
+        'rtt_avg'
+        'rtt_min'
+        'rtt_var'
+        'rx_dupe'
+        'rx_ooo'
+        'sndsize'
+        'sndused'
+        'state'
+        'tc_class'
+        'tc_mgt'
+        'tx_cwin'
+        'tx_win'
+        'type'
+        'unacked'
+        'uuid'
+        'vuuid'
+        'wifi_bytes_in'
+        'wifi_bytes_out'
+        'wired_bytes_in'
+        'wired_bytes_out'
+    )
+
+    options=(
+        '-m[Set the mode]:mode:(( $mode_types ))'
+        '-n[Disable address to name resolution]'
+        '-p[Select a process for display by name]:process name:_pgrep'
+        '-c[Be gentle on the CPU - draw less often]'
+        '-d[Delta mode]'
+        '-x[Extended display of numbers]'
+        '-P[Display per-process summaries only, excluding connection details]'
+        '-s[Set the delay between updates]:seconds'
+        '-t[Set interface type]:interface type:(( $interface_types ))'
+        '-l[Use logging mode and display samples]:samples'
+        '-L[Use logging mode, output in CSV format, display samples]:samples'
+        '-j[Include columns in the display]:column list: _values -s , "column name" $column_names'
+        '-J[Include only the specified columns in the display]:column list: _values -s , "column name" $column_names'
+        '-k[Exclude columns from the display]:column list: _values -s , "column name" $column_names'
+        '-h[Display this help message]'
+    )
+
+    _arguments $options
+}
+
+# # zsh completions for 'nettop'
+# # automatically generated with http://github.com/RobSis/zsh-completion-generator
+# local arguments
+
+# arguments=(
+#   '-m[the mode]'
+#   '-n[address to name resolution]'
+#   '-p[a particular process for display.  The option may be repeated to select multiple processes]'
+#   '-c[gentle on the CPU - draw less often]'
+#   '-d[mode]'
+#   '-x[display of numbers instead of human readable suffixes such as MiB]'
+#   '-P[per-process summaries only, excluding connection details.]'
+#   '-s[set the delay between updates to <delay> seconds.  The default value is 1 second.]'
+#   '-t[interface type]'
+#   '-l[use logging mode and display <samples> samples.  0 is treated as infinity.]'
+#   '-L[use logging mode, outputing in CSV format, and display <samples> samples.  0 is treated as infinity.]'
+#   '-j[name list>   Include columns named in the parameter list in the display.]'
+#   '-J[name list>   Include only the columns named in the parameter list in the display.]'
+#   '-k[name list>   Exclude columns named in the parameter list from the display.]'
+#   '-h[this help message]'
+#   '*:filename:_files'
+# )
+
+# _arguments -s $arguments

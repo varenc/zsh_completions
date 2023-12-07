@@ -1,0 +1,66 @@
+#compdef dust
+
+## ChatGPT 2023-11-05
+
+_dust () {
+    local arguments
+    arguments=(
+        '(-b --no-percent-bars)'{-b,--no-percent-bars}'[no percent bars or percentages will be displayed]'
+        '(-c --no-colors)'{-c,--no-colors}'[no colors will be printed]'
+        '(-d --depth)'{-d,--depth}'[set depth to show]:depth:_guard "[0-9]+" "depth (number)"'
+        '(-D --only-dir)'{-D,--only-dir}'[only directories will be displayed]'
+        '(-e --filter)'{-e,--filter}'[only include filepaths matching regex]:regex:(.*)'
+        '(-f --filecount)'{-f,--filecount}'[directory "size" is number of child files/dirs not disk size]'
+        '(-F --only-file)'{-F,--only-file}'[only files will be displayed]'
+        '(-h --help)'{-h,--help}'[print help information]'
+        '(-H --si)'{-H,--si}'[print sizes in powers of 1000]'
+        '(-i --ignore_hidden)'{-i,--ignore_hidden}'[do not display hidden files]'
+        '(-L --dereference-links)'{-L,--dereference-links}'[dereference sym links - treat sym links as directories]'
+        '(-n --number-of-lines)'{-n,--number-of-lines}'[number of lines of output to show]:number of lines:_guard "[0-9]+" "number of lines"'
+        '(-p --full-paths)'{-p,--full-paths}'[subdirectories will not have their path shortened]'
+        '(-P --no-progress)'{-P,--no-progress}'[disable the progress indication]'
+        '(-r --reverse)'{-r,--reverse}'[print tree upside down (biggest highest)]'
+        '(-R --screen-reader)'{-R,--screen-reader}'[for screen readers - removes bars and adds depth level column]'
+        '(-s --apparent-size)'{-s,--apparent-size}'[use file length instead of blocks]'
+        '--skip-total[no total row will be displayed]'
+        '(-t --file_types)'{-t,--file_types}'[show only these file types]'
+        '(-v --invert-filter)'{-v,--invert-filter}'[exclude filepaths matching regex]:regex:(.*)'
+        '(-V --version)'{-V,--version}'[print version information]'
+        '(-w --terminal_width)'{-w,--terminal_width}'[specify width of output]:width:_guard "[0-9]+" "width (number)"'
+        '(-x --limit-filesystem)'{-x,--limit-filesystem}'[only count files and directories on the same filesystem]'
+        '(-X --ignore-directory)'{-X,--ignore-directory}'[exclude file or directory with this name]:name:(*)'
+        '(-z --min-size)'{-z,--min-size}'[minimum size file to include in output]:size:_guard "[0-9]+" "size (number)"'
+        '*::inputs:_files'
+    )
+    _arguments -s $arguments
+}
+
+_dust "$@"
+
+
+# # zsh completions for 'dust'
+# # automatically generated with http://github.com/RobSis/zsh-completion-generator
+# local arguments
+
+# arguments=(
+#   {-f,--filecount}'[directory size is number of child files/dirs not disk size]'
+#   {-s,--apparent-size}'[use file length instead of blocks]'
+#   {-p,--full-paths}'[subdirectories will not have their path shortened]'
+#   {-h,--help}'[prints help information]'
+#   {-i,--ignore_hidden}'[Do not display hidden files]'
+#   {-x,--limit-filesystem}'[only count the files and directories on the same filesystem as the supplied directory]'
+#   {-b,--no-percent-bars}'[no percent bars or percentages will be displayed]'
+#   {-c,--no-colors}'[no colors will be printed (normally largest directories are colored)]'
+#   {-r,--reverse}'[print tree upside down (biggest highest)]'
+#   {-t,--file_types}'[show only these file types]'
+#   {-V,--version}'[prints version information]'
+#   {-d,--depth}'[depth to show]'
+#   {-e,--filter}'[...                        Only include files matching this regex. For png files type: -e "\.png$"]'
+#   {-X,--ignore-directory}'[...    Exclude any file or directory with this name]'
+#   {-v,--invert-filter}'[...          Exclude files matching this regex. To ignore png files type: -v "\.png$"]'
+#   {-n,--number-of-lines}'[number of lines of output to show. This is Height, (but h is help) \[default: 20\]]'
+#   {-w,--terminal}'[_width <width>                    Specify width of output overriding the auto detection of terminal width]'
+#   '*:filename:_files'
+# )
+
+# _arguments -s $arguments
