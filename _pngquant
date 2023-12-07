@@ -1,0 +1,21 @@
+#compdef pngquant
+
+# zsh completions for 'pngquant'
+# automatically generated with http://github.com/RobSis/zsh-completion-generator
+local arguments
+
+arguments=(
+  '--force[overwrite existing output files (synonym: -f)]'
+  '--skip-if-larger[only save converted files if theyre smaller than original]'
+  '--output[destination file path to use instead of --ext (synonym: -o)]'
+  '--ext[.png     set custom suffix/extension for output filenames]'
+  '--quality[dont save below min, use fewer colors below max (0-100)]'
+  '--speed[speed/quality trade-off. 1=slow, 4=default, 11=fast & rough]'
+  '--nofs[disable Floyd-Steinberg dithering]'
+  '--posterize[output lower-precision color (e.g. for ARGB4444 output)]'
+  '--strip[remove optional metadata (default on Mac)]'
+  '--verbose[print status messages (synonym: -v)]'
+  '*:filename:_files'
+)
+
+_arguments -s $arguments

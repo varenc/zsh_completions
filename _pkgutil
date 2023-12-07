@@ -1,0 +1,40 @@
+#compdef pkgutil
+
+# zsh completions for 'pkgutil'
+# automatically generated with http://github.com/RobSis/zsh-completion-generator
+local arguments
+
+arguments=(
+  '--help[show this usage guide]'
+  {--verbose,-v}'[show contextual information and format for easy reading]'
+  {--force,-f}'[perform all operations without asking for confirmation]'
+  '--volume[perform all operations on the specified volume]'
+  '--edit-pkg[adjust properties of package PKGID using --learn PATH]'
+  '--only-files[list only files (not directories) in --files listing]'
+  '--only-dirs[list only directories (not files) in --files listing]'
+  '--regexp[try all PKGID arguments as regular expressions]'
+  {--pkgs,--packages}'[list all currently installed package IDs on --volume]'
+  '--pkgs-plist[list all package IDs on --volume in plist format]'
+  '--pkgs[list package IDs on --volume that match REGEXP]'
+  '--groups[list all GROUPIDs on --volume]'
+  '--groups-plist[list all GROUPIDs on --volume in plist format]'
+  '--group-pkgs[list all PKGIDs in GROUPID]'
+  '--files[list files installed by the specified package]'
+  '--lsbom[list files in the same format as lsbom -s]'
+  '--pkg-groups[list all GROUPIDs that PKGID is a member of]'
+  '--export-plist[print all info about PKGID in plist format]'
+  '--pkg-info[show metadata about PKGID]'
+  '--pkg-info-plist[show metadata about PKGID in plist format]'
+  '--file-info[show metadata known about PATH]'
+  '--file-info-plist[show metadata known about PATH in plist format]'
+  '--forget[discard receipt data for the specified package]'
+  '--learn[update --edit-pkg PKGID with actual metadata from PATH]'
+  '--expand[DIR       Expand the flat package PKG to DIR]'
+  '--flatten[PKG      Flatten the files at DIR as PKG]'
+  '--bom[extract any Bom files from the pkg at PATH into /tmp]'
+  '--payload-files[list the paths archived within the (m)pkg at PATH]'
+  '--check-signature[validate the signature of the pkg at PATH and print certificate information]'
+  '*:filename:_files'
+)
+
+_arguments -s $arguments
