@@ -1,0 +1,22 @@
+#compdef networkQuality
+
+_networkQuality() {
+    local -a options
+    options=(
+        '-C[Override Configuration URL or path]:configuration URL or path:_files'
+        '-c[Produce computer-readable output]'
+        '-f[Enforce Protocol selections]:comma-separated list of protocols:(h1 h2 h3 L4S noL4S)'
+        '-h[Show help]'
+        '-I[Bind test to interface]:network interface name:_net_interfaces'
+        '-k[Disable certificate validation]'
+        '-p[Use iCloud Private Relay]'
+        '-r[Connect to host or IP, overriding DNS for initial config request]:host or IP:_hosts'
+        '-S[Start and run server on specified port]:port:_ports'
+        '-s[Run tests sequentially instead of parallel upload/download]'
+        '-v[Verbose output]'
+    )
+
+    _arguments $options
+}
+
+_networkQuality
