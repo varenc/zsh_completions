@@ -10,7 +10,6 @@ my personal zsh completions from various sources. Some generated, some found els
  - `swcutil`
  - `codesign`
  - `exiftool`
- - `file`
  - `iSMC`
  - `ioreg`
  - `pkgutil`
