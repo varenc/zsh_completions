@@ -19,3 +19,5 @@ my personal zsh completions from various sources. Some generated, some found els
  - `img2sixel`
  - `networkQuality`
  - `trip`
+ - `grealpath`
+ - `blueutil`
