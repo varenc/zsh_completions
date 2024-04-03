@@ -1,0 +1,19 @@
+#compdef grealpath
+
+_grealpath() {
+    _arguments \
+        '(-e --canonicalize-existing)'{-e,--canonicalize-existing}'[all components of the path must exist]' \
+        '(-m --canonicalize-missing)'{-m,--canonicalize-missing}'[no path components need exist or be a directory]' \
+        '(-L --logical)'{-L,--logical}'[resolve '"'"'..'"'"' components before symlinks]' \
+        '(-P --physical)'{-P,--physical}'[resolve symlinks as encountered (default)]' \
+        '(-q --quiet)'{-q,--quiet}'[suppress most error messages]' \
+        '--relative-to=[print the resolved path relative to DIR]:DIR:_files -/' \
+        '--relative-base=[print absolute paths unless paths below DIR]:DIR:_files -/' \
+        '(-s --strip --no-symlinks)'{-s,--strip,--no-symlinks}'[don'"'"'t expand symlinks]' \
+        '(-z --zero)'{-z,--zero}'[end each output line with NUL, not newline]' \
+        '--help[display help and exit]' \
+        '--version[output version information and exit]' \
+        '*:file:_files'
+}
+
+compdef _grealpath grealpath

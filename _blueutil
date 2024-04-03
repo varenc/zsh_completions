@@ -1,0 +1,54 @@
+#compdef _blueutil blueutil
+
+# Auto-generated with h2o
+
+
+function _blueutil {
+    local line state
+
+    function _commands {
+        local -a commands
+        commands=(
+        )
+        _describe 'command' commands
+    }
+ 
+
+    _arguments -C \
+        {-p,--power}'[output power state as 1 or 0]' \
+        {-p,--power}'[set power state]' \
+        {-d,--discoverable}'[output discoverable state as 1 or 0]' \
+        {-d,--discoverable}'[set discoverable state]' \
+        {--favourites,--favorites}'[list favourite devices]' \
+        '--inquiry[inquiry devices in range, 10 seconds duration by default excluding time for name updates]' \
+        '--paired[list paired devices]' \
+        '--recent[list recently used devices, 10 by default, 0 to list all]' \
+        '--connected[list connected devices]' \
+        '--info[show information about device]' \
+        '--is-connected[connected state of device as 1 or 0]' \
+        '--connect[create a connection to device]' \
+        '--disconnect[close the connection to device]' \
+        '--pair[pair with device, optional PIN of up to 16 characters will be used instead of interactive input if requested in specific pair mode]' \
+        '--unpair[EXPERIMENTAL unpair the device]' \
+        {--add-favourite,--add-favorite}'[add to favourites]' \
+        {--remove-favourite,--remove-favorite}'[remove from favourites]' \
+        '--format[change output format of info and all listing commands]' \
+        '--wait-connect[EXPERIMENTAL wait for device to connect]' \
+        '--wait-disconnect[EXPERIMENTAL wait for device to disconnect]' \
+        '--wait-rssi[EXPERIMENTAL wait for device RSSI value which is 0 for golden range, -129 if it cannot be read (e.g. device is disconnected)]' \
+        {-h,--help}'[this help]' \
+        {-v,--version}'[show version]' \
+        '*: :_files'
+
+    case $state in
+    (cmd)
+        _commands
+        ;;
+    (subcmd)
+        case $line[1] in
+        esac
+        ;;
+     esac
+
+}
+
