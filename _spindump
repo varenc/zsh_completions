@@ -1,0 +1,137 @@
+#compdef _spindump spindump
+
+# Auto-generated with h2o
+
+    function _spindump_duration {
+        _arguments \
+            "*: :_files"
+
+    }
+
+    function _spindump_interval {
+        _arguments \
+            "*: :_files"
+
+    }
+
+
+function _spindump {
+    local line state
+
+    function _commands {
+        local -a commands
+        commands=(
+            'duration:The duration of the sampling in seconds. Default 10.'
+            'interval:The number of miliseconds between samples. Default 10.'
+        )
+        _describe 'command' commands
+    }
+ 
+
+    _arguments -C \
+        '-i[Read in the file at <path> and generate a spindump report. Spindump reports can be regenerated with different display options]':file:_files \
+        '-o[Specifies where to write results. If <path> is a directory, the output file will be put inside that directory with a default name, without overwriting any existing file. By default, the output file is put in /tmp/]':file:_files \
+        '-startTime[Omit samples before the given wall time specified as a string of the format "YYYY-MM-DD HH:MM:SS" with optional decimal seconds and time zone, or with a unix timestamp in seconds]' \
+        '-endTime[Omit samples after the given wall time specified as a string of the format "YYYY-MM-DD HH:MM:SS" with optional decimal seconds and time zone, or with a unix timestamp in seconds]' \
+        '-startMachAbsTimeNs[Omit samples before the given mach abs time (in nanoseconds)]' \
+        '-endMachAbsTimeNs[Omit samples after the given mach abs time (in nanoseconds)]' \
+        '-machAbsTimeRangeNs[Only include samples in the given mach abs time range (in nanoseconds)]' \
+        '-startMachAbsTime[Omit samples before the given mach abs time (in mach time units)]' \
+        '-endMachAbsTime[Omit samples after the given mach abs time (in mach time units)]' \
+        '-machAbsTimeRange[Only include samples in the given mach abs time range]' \
+        '-indexRange[Only include samples in the given range]' \
+        '-startIndex[Omit samples before sample number <int>]' \
+        '-endIndex[Omit samples after sample number <int>]' \
+        '-last[Only include data from the the last <int> seconds of the data being parsed. Only valid when not sampling the live system. Use "m", "h, "d", or "samples" to instead specify minutes, hours, days, or number of samples]' \
+        '-filterToEventTimeRange[When parsing a raw input file, automatically filter the report to the time range of the event found in the data]' \
+        '-heavy[Sort callstacks by count (default)]' \
+        '-timeline[Sort callstacks chronologically]' \
+        '-sortProcessesBy[Sort processes by the given attribute. This option may be provided multiple times to provide sub-orderings. Valid attributes are "Name", "ID", "HighestBasePriority", "HighestScheduledPriority", "LargestFootprint", "CpuTime", "InstructionsRetired", "Cycles", "CyclesPerInstruction", "KernelLast", "SampleCount", "ExecTimestamp". Any of those attribute strings can be prepended with "Reverse" to reverse the default sort order, i.e. "ReverseName". The target process will always be first in the report.]' \
+        '-sortCallTreesBy[Sort call trees by the given attribute. This option may be provided multiple times to provide sub-orderings. Valid attributes are "MainThreadFirst", "SampleCount", "DispatchQueue", "Thread", "HighestBasePriority", "HighestScheduledPriority", "CpuTime", "InstructionsRetired", "Cycles", "CyclesPerInstruction". Any of those attribute strings can be prepended with "Reverse" to reverse the default sort order, i.e. "ReverseSampleCount". The target thread will always be first in the report.]' \
+        '-noText[Omit textual format (include binary format only)]' \
+        '-noBinary[Omit binary format (include text format only)]' \
+        '-noFile[Do not output to a file (the report, including binary format, will go to stdout instead)]' \
+        '-stdout[Print the report to stdout]' \
+        '-json[Print the report in json format]' \
+        '-siginfo[After sampling, wait for SIGINFO before reporting]' \
+        '-timelimit[Exit after t seconds even if the report hasn'\''t been saved]' \
+        '-open[Specifies an app in which to open the resulting report]' \
+        '-reveal[Reveal the resulting report in Finder]' \
+        '-delayonsignal[Stop sampling t seconds after receiving a signal instead of stopping immediately]' \
+        '-wait[Wait for the process to exist before sampling. If the process already exists, spindump will begin sampling immediately.]' \
+        '-displayIdleWorkQueueThreads[Display idle work queue threads]' \
+        '-verbose[Verbose report output]' \
+        '-noThrottle[Do not throttle sampling rate on excessive memory growth]' \
+        '-noProcessingWhileSampling[Do not parse stackshots until done sampling]' \
+        '-inspectLiveSystem[When parsing an input file, assume the data was gathered on the current live system (so spindump can inspect processes if necessary to get symbol information)]' \
+        '-symbols[Read in symbol data at contained in the file at <path>]':file:_files \
+        '-dscSymDir[The path to dscsym directory containing shared cache layout files (for use when parsing input files gathered on a different machine)]':file:_files \
+        '-dsym[Path to a dsym to use during symbolication (may be specified multiple times)]':file:_files \
+        '-dsymForUUID[Use dsymForUUID to find symbols for everything (takes a while).]' \
+        '-findDsyms[Use dsymForUUID to find symbols for frames within the process matching the given name or pid (may be specified multiple times)]' \
+        '-noRunnable[Omit callstacks when threads are runnable (but not running)]' \
+        '-noRunning[Omit callstacks when threads are running]' \
+        '-noBlocked[Omit callstacks when threads are blocked]' \
+        '-sampleWithoutTarget[Sample for entire duration even if target exits or doesn'\''t exist]' \
+        '-onlyTarget[Only sample the target process (allows faster sampling, use '\''u'\'' to specify interval in microseconds: e.g. 500u)]' \
+        '-targetThreadID[Target the provided thread ID (sort topmost)]' \
+        '-symbolicate[(default) Symbolicate the report]' \
+        '-noSymbolicate[Do not symbolicate the report. UUID+offset information will still be gathered for later symbolication]' \
+        '-noBulkSymbolication[Don'\''t attempt to use BulkSymbolication]' \
+        '-aggregateCallTreesByThread[Group call trees by thread ID rather than dispatch queue]' \
+        '-aggregateCallTreesByProcess[Each process gets one call tree for all threads]' \
+        '-aggregateSwiftAsyncTogetherWithOtherCallTrees[Don'\''t aggregate swift async callstacks separately from other callstacks]' \
+        '-aggregateSwiftAsyncCallTreesByBaseFunction[Aggregate swift async callstacks into call trees by the base function (the function initially started by the swift Task)]' \
+        '-aggregateSwiftAsyncCallTreesBySwiftTask[Aggregate swift async callstacks into call trees by swift task]' \
+        '-aggregateSwiftAsyncCallTreesByThread[Aggregate swift async callstacks into call trees by thread]' \
+        '-aggregateSwiftAsyncCallTreesByProcess[Aggregate swift async callstacks into call trees by process (each process will have one swift async call tree]' \
+        '-swiftAsyncDisplayCRootCallstacks[Display the C root callstacks replaced swift async callstacks]' \
+        '-swiftAsyncPrintLeafyCCallstackOnTopOfSwiftAsyncCallstacksAlways[Display the leafy C callstack on top of the swift async frames even when run on the main thread]' \
+        '-swiftAsyncPrintLeafyCCallstackOnTopOfCRootCallstacksAlways[Always display the entire C callstack together. Swift async callstacks will be in a separate call tree without the leafy C callstack]' \
+        '-omitFramesBelowSampleCount[Omit callstack frames with count less than <int>]' \
+        '-stackshotsOnly[Only parse the stackshots from a ktrace file, no kperf]' \
+        '-noIPC[Do not IPC out to any daemons (more expensive, but more reliable)]' \
+        '-reason[An optional string to describe why spindump is being invoked]' \
+        '-automation[Indicate that spindump is running via automation, so it should prefer to avoid impacting system performance (e.g. avoid audio pops)]' \
+        '-wake[Monitor when the machine wakes and save a report.]' \
+        '-microstackshots[Report interrupt microstackshots.]' \
+        '-microstackshots_io[Report I/O microstackshots.]' \
+        '-microstackshots_datastore[Path to microstackshot datastore on disk. If specified without microstackshots_save, read from saved microstackshot data at <path> instead of pulling data from this machine.]':file:_files \
+        '-microstackshots_save[Save microstackshots to the path specified by microstackshots_datastore instead of reporting.]' \
+        '-microstackshots_starttime[Start time for microstackshot data in a parseable date string such as "11/14/12 12:00am" or a unix timestamp as an integer. Default is to use data from as far back as available. (Use -h after to echo the date parsed)]' \
+        '-microstackshots_endtime[End time for microstackshot data in a parseable date string such as "11/14/12 12:00am" or a unix timestamp as an integer. Default is to use data up to as recent as available. (Use -h after to echo the date parsed)]' \
+        '-microstackshots_pid[Only report on the given process. Default is all processes.]' \
+        '-microstackshots_threadid[Only report on the given thread. Default is all threads.]' \
+        '-microstackshots_dsc_path[Path to a directory containing dyld shared cache information. Default is to historical information for the local machine.]':file:_files \
+        '-threadpriority_min[Filter out any thread samples that have a priority below the given threshold.]' \
+        '-threadpriority_max[Filter out any thread samples that have a priority above the given threshold.]' \
+        '-batteryonly[Filter out any stacks from when the machine was on AC]' \
+        '-aconly[Filter out any stacks from when the machine was on battery]' \
+        '-useridleonly[Filter out any stacks from when the user was active]' \
+        '-useractiveonly[Filter out any stacks from when the user was idle]' \
+        '-arch[Machine architecture (i.e. "arm64e")]' \
+        '-hwPageSize[Hardware page size in bytes]' \
+        '-vmPageSize[VM page size in bytes]' \
+        ': :->cmd' \
+        '*:: :->subcmd'
+
+    case $state in
+    (cmd)
+        _commands
+        ;;
+    (subcmd)
+        case $line[1] in
+        (duration)
+            _spindump_duration
+            ;;
+
+        (interval)
+            _spindump_interval
+            ;;
+
+        esac
+        ;;
+     esac
+
+}
+
