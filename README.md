@@ -20,5 +20,7 @@ my personal zsh completions from various sources. Some generated, some found els
  - `networkQuality`
  - `trip`
  - `grealpath`
+ - `security`
+ - `stress-ng`
  - `blueutil`
  - `spindump`
