@@ -26,4 +26,5 @@ my personal zsh completions from various sources. Some generated, some found els
  - `spindump`
  - `memory_pressure`
  - `system_profiler`
+ - `h2o`
  - `hyperfine`
