@@ -1,0 +1,1 @@
+lsd -trld $(git ls-files --others --exclude-standard | xargs -I{} stat -f "%N" {} | sort -n)
