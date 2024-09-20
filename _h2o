@@ -1,0 +1,43 @@
+#compdef _h2o h2o
+
+# Auto-generated with h2o
+
+
+function _h2o {
+    local line state
+
+    function _commands {
+        local -a commands
+        commands=(
+        )
+        _describe 'command' commands
+    }
+ 
+
+    _arguments -C \
+        {-c,--command}'[Extract CLI options from the help texts or man pages associated with the command. Subcommand pages are also scanned automatically.]' \
+        '--skip-man[Skip scanning manpage and focus on help text. Does not apply if input source is a file.]' \
+        {-f,--file}'[Extract CLI options form the text file.]':file:_files \
+        {-s,--subcommand}'[Extract CLI options from the subcommand-specific help text or man page. Enter a command-subcommand pair, like git-log, as the argument.]' \
+        '--loadjson[Load JSON file in Command schema.]':file:_files \
+        '--format[Select output format of the completion script (bash|zsh|fish|json|native) (default: "native")]' \
+        '--json[Output in JSON. Same as --format=json]' \
+        '--list-subcommands[\[Debug\] List subcommands]' \
+        '--debug[\[Debug\] Run preprocessing only]' \
+        '--depth[Set upper bound of the depth of subcommand level (default: 4)]' \
+        '--version[Show version]' \
+        {-h,--help}'[Show this help text]' \
+        '*: :_files'
+
+    case $state in
+    (cmd)
+        _commands
+        ;;
+    (subcmd)
+        case $line[1] in
+        esac
+        ;;
+     esac
+
+}
+
