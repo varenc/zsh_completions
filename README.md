@@ -24,4 +24,6 @@ my personal zsh completions from various sources. Some generated, some found els
  - `stress-ng`
  - `blueutil`
  - `spindump`
+ - `memory_pressure`
+ - `system_profiler`
  - `hyperfine`
