@@ -29,3 +29,4 @@ my personal zsh completions from various sources. Some generated, some found els
  - `system_profiler`
  - `h2o`
  - `hyperfine`
+ - `dyld_info`
