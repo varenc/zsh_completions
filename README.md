@@ -2,6 +2,7 @@
 my personal zsh completions from various sources. Some generated, some found elsewhere, some hand written.
 
 ## Completions
+ - `tmutil`
  - `hdiutil`
  - `nettop`
  - `nmap`
