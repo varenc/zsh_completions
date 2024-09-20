@@ -1,0 +1,39 @@
+#compdef _memory_pressure memory_pressure
+
+# Auto-generated with h2o
+
+
+function _memory_pressure {
+    local line state
+
+    function _commands {
+        local -a commands
+        commands=(
+        )
+        _describe 'command' commands
+    }
+ 
+
+    _arguments -C \
+        '-l[- allocate memory until a low memory notification is received (warn OR critical)]' \
+        '-p[- allocate memory until percent free is this (or less)]' \
+        '-s[- how long to sleep between checking for a set percent level]' \
+        '-w[- don'\''t allocate, just wait until percent free is this then exit]' \
+        '-y[- Hysteresis Interval: how long to wait after requested percntage free is reached, before exiting program. Requires the usage of the -p option]' \
+        '-v[- print VM statistics every sampling interval]' \
+        '-Q[- reduces the tool'\''s output]' \
+        '-S[- simulate the system'\''s memory pressure level without applying any real pressure]' \
+        '*: :_files'
+
+    case $state in
+    (cmd)
+        _commands
+        ;;
+    (subcmd)
+        case $line[1] in
+        esac
+        ;;
+     esac
+
+}
+
