@@ -1,0 +1,46 @@
+#compdef _dyld_info dyld_info
+
+# Auto-generated with h2o
+
+
+function _dyld_info {
+    local line state
+
+    function _commands {
+        local -a commands
+        commands=(
+        )
+        _describe 'command' commands
+    }
+ 
+
+    _arguments -C \
+        '-arch[Only display the specified architecture. Other architectures in a universal image are ignored.]' \
+        '-platform[Display the platform (e.g. macOS, iOS) that the binary was built for.]' \
+        '-segments[Display all segments and sections with size info.]' \
+        '-dependents[Display all dylibs that the binary is linked against.]' \
+        '-inits[Display all static initializers and Objective-C +load methods.]' \
+        '-exports[Display all exported symbols.]' \
+        '-imports[Display all imported symbols.]' \
+        '-objc[Display the Objective-C classes and categories defined.]' \
+        '-fixups[Display a simple table of fixup locations and what dyld will set them to.]' \
+        '-fixup_chains[If the binary uses chained fixups, displays the format of the chains and the starts.]' \
+        '-fixup_chain_details[Display a table of all the raw fixup chain bits and their meanings.]' \
+        '-symbolic_fixups[Display the offset of all functions starts and their name.]' \
+        '-symbolic_fixups[Display all fixups, grouped by data symbol.]' \
+        '-opcodes[Display all the opcodes used to generate the rebase and binding information.]' \
+        '-validate_only[Display nothing if binary is valid, or information about what parts are malformed.]' \
+        '*: :_files'
+
+    case $state in
+    (cmd)
+        _commands
+        ;;
+    (subcmd)
+        case $line[1] in
+        esac
+        ;;
+     esac
+
+}
+
